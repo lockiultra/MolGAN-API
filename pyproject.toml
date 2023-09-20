@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "molgan"
+version = "0.1.0"
+description = ""
+authors = ["lockiultra <lockiultra@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+pony = "^0.7.16"
+rdkit = "^2023.3.3"
+torch = "^2.0.1"
+scipy = "^1.11.2"
+tensorflow = "^2.13.0"
+pandas = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
