@@ -37,3 +37,8 @@ def get_disease_pipeline() -> dict:
 
 def predict_to_json(predict_dict: dict) -> dict:
     return {disease: float(prob[0]) for disease, prob in predict_dict.items()}
+
+def get_help_message():
+    return {'message': 'API Help',
+            'Sample Molecule': '/molgan/sample_mol',
+            'Predict Molecule': '/molgan/predict/{smiles}'}

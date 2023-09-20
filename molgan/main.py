@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from utils import get_model, get_disease_pipeline, predict_to_json
+from utils import get_model, get_disease_pipeline, predict_to_json, get_help_message
 
 app = FastAPI()
 
@@ -11,7 +11,7 @@ def root():
 
 @app.get('/help')
 def help():
-    return {'message': 'Help'}
+    return get_help_message()
 
 @app.get('/molgan/sample_mol')
 def sample_mol():
