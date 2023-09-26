@@ -39,7 +39,6 @@ RUN adduser \
 # Install and run poetry
 COPY poetry.lock pyproject.toml .
 RUN pip install poetry
-RUN poetry config virtualenvs.create false
 RUN poetry install
 
 # Switch to the non-privileged user to run the application.
