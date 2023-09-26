@@ -32,14 +32,15 @@ RUN adduser \
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
-# RUN --mount=type=cache,target=/root/.cache/pip \
-#     --mount=type=bind,source=requirements.txt,target=requirements.txt \
-#     python -m pip install -r requirements.txt
+COPY requirements.txt .
+RUN --mount=type=cache,target=/root/.cache/pip \
+    --mount=type=bind,source=requirements.txt,target=requirements.txt \
+    python -m pip install -r requirements.txt
 
 # Install and run poetry
-COPY poetry.lock pyproject.toml .
-RUN pip install poetry
-RUN poetry install
+# COPY poetry.lock pyproject.toml .
+# RUN pip install poetry
+# RUN poetry config virtualenvs.create false && poetry install
 
 # Switch to the non-privileged user to run the application.
 USER appuser
@@ -52,4 +53,5 @@ EXPOSE 8000
 
 # Run the application.
 # CMD uvicorn 'main:app' --host=0.0.0.0 --port=8000
+# CMD ["poetry", "run", "python", "main.py"]
 CMD ["python", "main.py"]
