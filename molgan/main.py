@@ -18,11 +18,21 @@ def sample_mol():
     model = get_model()
     return {'SMILES': model.sample_prior()}
 
-@app.post('/molgan/predict/{smiles}')
-def predict(smiles):
+@app.get('/molgan/predict')
+def predict_test(smiles):
     dp = get_disease_pipeline()
-    predict_json = predict_to_json(dp.predict([smiles]))
+    try:
+        predict_json = predict_to_json(dp.predict([smiles]))
+    except:
+        predict_json = {'error': 'Invalid SMILES'}
     return predict_json
+
+
+# @app.post('/molgan/predict/{smiles}')
+# def predict(smiles):
+#     dp = get_disease_pipeline()
+#     predict_json = predict_to_json(dp.predict([smiles]))
+#     return predict_json
 
 if __name__ == '__main__':
     uvicorn.run(app, host='0.0.0.0', port=8000)
