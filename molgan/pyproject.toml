@@ -15,8 +15,12 @@ torch = ">=2.0.0, !=2.0.1"
 scipy = "^1.11.2"
 tensorflow = "^2.13.0"
 pandas = "^2.1.0"
+redis = "^5.0.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.extras]
+caching = ["redis"]

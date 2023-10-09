@@ -7,6 +7,9 @@ anyio==3.7.1 ; python_version >= "3.9" and python_version < "3.12" \
 astunparse==1.6.3 ; python_version >= "3.9" and python_version < "3.12" \
     --hash=sha256:5ad93a8456f0d084c3456d059fd9a92cce667963232cbf763eac3bc5b7940872 \
     --hash=sha256:c2652417f2c8b5bb325c885ae329bdf3f86424075c4fd1a128674bc6fba4b8e8
+async-timeout==4.0.3 ; python_version >= "3.9" and python_full_version <= "3.11.2" \
+    --hash=sha256:4640d96be84d82d02ed59ea2b7105a0f7b33abe8703703cd0ab0bf87c427522f \
+    --hash=sha256:7405140ff1230c310e51dc27b3145b9092d659ce68ff733fb0cefe3ee42be028
 cachetools==5.3.1 ; python_version >= "3.9" and python_version < "3.12" \
     --hash=sha256:95ef631eeaea14ba2e36f06437f36463aac3a096799e876ee55e5cdccb102590 \
     --hash=sha256:dce83f2d9b4e1f732a8cd44af8e8fab2dbe46201467fc98b3ef8f269092bf62b
@@ -539,6 +542,9 @@ rdkit==2023.3.3 ; python_version >= "3.9" and python_version < "3.12" \
     --hash=sha256:c3fbe026e508e4b18f237b962ba64664a73472aefb7a233a96111a44cbde017e \
     --hash=sha256:e455df1c75fc0d6eebb173f17f9660697a9f8c2b5b32643c162362e294e83af8 \
     --hash=sha256:edf690b0d340343e7281d3f9c446767185be80a4918a68d755992d0f7818579b
+redis==5.0.1 ; python_version >= "3.9" and python_version < "3.12" \
+    --hash=sha256:0dab495cd5753069d3bc650a0dde8a8f9edde16fc5691b689a566eda58100d0f \
+    --hash=sha256:ed4802971884ae19d640775ba3b03aa2e7bd5e8fb8dfaed2decce4d0fc48391f
 requests-oauthlib==1.3.1 ; python_version >= "3.9" and python_version < "3.12" \
     --hash=sha256:2577c501a2fb8d05a304c09d090d6e47c306fef15809d102b327cf8364bddab5 \
     --hash=sha256:75beac4a47881eeb94d5ea5d6ad31ef88856affe2332b9aafb52c6452ccf0d7a

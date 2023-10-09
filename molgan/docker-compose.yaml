@@ -1,0 +1,30 @@
+version: '3.10'
+
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+  
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    
+volumes:
+  redis-data:

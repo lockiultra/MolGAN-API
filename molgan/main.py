@@ -4,6 +4,14 @@ import uvicorn
 from utils import get_model, get_disease_pipeline, predict_to_json, get_help_message
 
 app = FastAPI()
+model = None
+dp = None
+
+@app.on_event('startup')
+def startup():
+    global model, dp
+    model = get_model()
+    dp = get_disease_pipeline()
 
 @app.get('/')
 def root():
@@ -15,16 +23,19 @@ def help():
 
 @app.get('/molgan/sample_mol')
 def sample_mol():
-    model = get_model()
+    global model
+    # model = get_model()
     return {'SMILES': model.sample_prior()}
 
 @app.get('/molgan/predict')
 def predict_test(smiles):
-    dp = get_disease_pipeline()
+    global dp
+    # dp = get_disease_pipeline()
     try:
         predict_json = predict_to_json(dp.predict([smiles]))
+        predict_json['status'] = 'OK'
     except:
-        predict_json = {'error': 'Invalid SMILES'}
+        predict_json = {'status': 'NOT OK', 'error': 'Invalid SMILES'}
     return predict_json
 
 
@@ -35,4 +46,4 @@ def predict_test(smiles):
 #     return predict_json
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=8080)
